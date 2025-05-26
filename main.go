@@ -37,7 +37,6 @@ func main() {
 	for scanner.Scan() {
 		currline := scanner.Text()
 		if len(currline) > 2 && currline[:2] == "##" {
-			fmt.Println(answerTemp)
 			if questionTemp != "" && answerTemp != "" {
 				questions = append(questions, question{questionTemp, answerTemp})
 			}
