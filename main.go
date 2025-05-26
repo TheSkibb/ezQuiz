@@ -55,6 +55,7 @@ func startShell(questions []question) {
 	reader := bufio.NewReader(os.Stdin)
 	message := ""
 
+	fmt.Println("welcome to the flashcard program, press enter to select a random question! :-)")
 	for message != "exit" {
 		fmt.Print(">")
 		var err error
@@ -71,7 +72,6 @@ func startShell(questions []question) {
 func handleInput(input string, questions []question) string {
 	switch input {
 	case "":
-		fmt.Println("Next")
 		printRandomQuestion(questions)
 	case "help", "h":
 		fmt.Println("help is on the way")
