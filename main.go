@@ -42,7 +42,7 @@ func main() {
 			}
 			questionTemp = currline[2:]
 			answerTemp = ""
-		} else if len(currline) > 2 && currline[:1] != "#" {
+		} else if (len(currline) > 2 && currline[:1] != "#") || currline == "" {
 			answerTemp += currline + "\n"
 		}
 	}
