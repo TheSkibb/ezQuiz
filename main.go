@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"strconv"
 )
 
 type question struct {
@@ -78,16 +79,42 @@ func handleInput(input string, questions []question) string {
 	case "exit", "quit", "q":
 		return "exit"
 	default:
-		fmt.Println("unregognized command")
+		// check if input is a number
+		n, err := strconv.Atoi(input)
+		if err == nil {
+			printIndexedQuestion(questions, n)
+		} else {
+			fmt.Println("unregognized command")
+		}
 	}
 	return ""
+}
+
+func printIndexedQuestion(questions []question, index int) {
+	max := len(questions) - 1
+	index = index % max
+
+	fmt.Println(index, questions[index].question)
+
+	//press anything to continue
+	reader := bufio.NewReader(os.Stdin)
+	reader.ReadString('\n')
+
+	answer := questions[index].answer
+
+	if answer == "" {
+		fmt.Println("no answer specified")
+	} else {
+		fmt.Println(answer)
+	}
+
 }
 
 func printRandomQuestion(questions []question) {
 	max := len(questions) - 1
 	randIndex := rand.Int() % max
 
-	fmt.Println(questions[randIndex].question)
+	fmt.Println(randIndex, questions[randIndex].question)
 
 	//press anything to continue
 	reader := bufio.NewReader(os.Stdin)
