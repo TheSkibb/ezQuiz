@@ -57,6 +57,7 @@ func startShell(questions []question) {
 	message := ""
 
 	fmt.Println("welcome to the flashcard program, press enter to select a random question! :-)")
+	fmt.Println("There are", len(questions), "in the current file")
 	for message != "exit" {
 		fmt.Print(">")
 		var err error
