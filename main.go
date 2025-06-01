@@ -133,19 +133,5 @@ func printRandomQuestion(questions questionList) {
 	//	}
 	//}
 
-	randQuestion := questions.questions[randIndex]
-
-	fmt.Println(randIndex, randQuestion.question)
-
-	//press anything to continue
-	reader := bufio.NewReader(os.Stdin)
-	reader.ReadString('\n')
-
-	answer := randQuestion.answer
-
-	if answer == "" {
-		fmt.Println("no answer specified")
-	} else {
-		fmt.Println(answer)
-	}
+	printIndexedQuestion(questions, randIndex)
 }
