@@ -103,17 +103,23 @@ func handleInput(input string, questions questionList) string {
 	return ""
 }
 
-func printIndexedQuestion(questions questionList, index int) {
-	max := len(questions.questions) - 1
+func printIndexedQuestion(q questionList, index int) {
+	max := len(q.questions) - 1
 	index = index % max //make sure it is withing bounds of array
+	title := "no title"
 
-	fmt.Println(index, questions.questions[index].question)
+	if q.questions[index].titleIndex <= len(q.titles) {
+		title = q.titles[q.questions[index].titleIndex-1]
+	}
+
+	fmt.Println("\"", title, "\"", index)
+	fmt.Println(q.questions[index].question)
 
 	//press anything to continue
 	reader := bufio.NewReader(os.Stdin)
 	reader.ReadString('\n')
 
-	answer := questions.questions[index].answer
+	answer := q.questions[index].answer
 
 	if answer == "" {
 		fmt.Println("no answer specified")
