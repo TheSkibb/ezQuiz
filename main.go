@@ -42,7 +42,7 @@ func main() {
 
 	questionTemp := ""
 	answerTemp := ""
-	titleCounter := 0
+	titleCounter := -1
 
 	for scanner.Scan() {
 		currline := scanner.Text()
@@ -108,8 +108,11 @@ func printIndexedQuestion(q questionList, index int) {
 	index = index % max //make sure it is withing bounds of array
 	title := "no title"
 
-	if q.questions[index].titleIndex <= len(q.titles) {
-		title = q.titles[q.questions[index].titleIndex-1]
+	fmt.Println(q.questions[index].titleIndex)
+	fmt.Println(len(q.titles))
+
+	if q.questions[index].titleIndex <= len(q.titles)-1 {
+		title = q.titles[q.questions[index].titleIndex]
 	}
 
 	fmt.Println("\"", title, "\"", index)
