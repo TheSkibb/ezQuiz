@@ -6,6 +6,8 @@ Takes as argument the location of a markdown file to read as flash cards.
 The markdown file needs to be on the format:
 
 ~~~md
+# Category
+
 ## question
 
 answer
@@ -15,9 +17,9 @@ answer
 answer 2
 ~~~
 
-big titles (single #) will be skipped.
-
 When running the program you will be presented with a shell. Press enter to select a random question from the markdown file
+
+**NOTICE: your document has to start with category (single "#") before any questions**
 
 # subdivider
 
